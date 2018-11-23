@@ -14,9 +14,9 @@ source:
   sha256: a01cdb320a75020bb56e0a16223ac5916f772b681610b5a870f5497920139167
 
 build:
+  noarch: generic
   merge_build_host: True  # [win]
-  number: 0
-  skip: true  # [win32]
+  number: 1000
   rpaths:
     - lib/R/lib/
     - lib/
@@ -49,8 +49,7 @@ about:
   license: GPL-3
   summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
