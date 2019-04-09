@@ -1,4 +1,4 @@
-{% set version = '0.6.0' %}
+{% set version = "0.6.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ggiraph_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ggiraph/ggiraph_{{ version }}.tar.gz
-  sha256: 7babed10b34ab47872b20700131254ec60906e13cd5a87114a618a23040b9fe9
+  sha256: 392a56e08bdb2c3dee0b69f01ec3b5358c2395de9c1ed72986dc68657b1626c7
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
