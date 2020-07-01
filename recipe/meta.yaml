@@ -1,4 +1,4 @@
-{% set version = '0.7.0' %}
+{% set version = "0.7.8" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ggiraph_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ggiraph/ggiraph_{{ version }}.tar.gz
-  sha256: 641d7d01401de016db96cb4c30c21c087cae727a1427997da92a9fdb84ab0280
+  sha256: 71b61a83d1042fafa0b90f8d04907900409d63964a98b5c504a86a54c7d9e247
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -65,7 +65,7 @@ about:
   summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.
   license_family: GPL3
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
