@@ -26,33 +26,37 @@ requirements:
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
-    - {{ posix }}make
     - {{ posix }}sed               # [win]
+    - {{ posix }}grep              # [win]
+    - {{ posix }}autoconf
+    - {{ posix }}automake          # [not win]
+    - {{ posix }}automake-wrapper  # [win]
+    - {{ posix }}pkg-config
+    - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-rcpp >=0.12.12
-    - r-gdtools >=0.2.1
-    - r-ggplot2 >=3.2.0
+    - r-ggplot2 >=3.3.0
     - r-htmltools
     - r-htmlwidgets >=0.6
     - r-purrr
     - r-rlang
+    - r-systemfonts
     - r-uuid
-    - r-xml2 >=1.0.0
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.12
-    - r-gdtools >=0.2.1
-    - r-ggplot2 >=3.2.0
+    - r-ggplot2 >=3.3.0
     - r-htmltools
     - r-htmlwidgets >=0.6
     - r-purrr
     - r-rlang
+    - r-systemfonts
     - r-uuid
-    - r-xml2 >=1.0.0
 
 test:
   commands:
@@ -61,7 +65,7 @@ test:
 
 about:
   home: https://davidgohel.github.io/ggiraph
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.
   license_family: GPL3
   license_file:
