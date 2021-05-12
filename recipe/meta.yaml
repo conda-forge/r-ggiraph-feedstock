@@ -1,4 +1,4 @@
-{% set version = "0.7.8" %}
+{% set version = "0.7.9" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ggiraph_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ggiraph/ggiraph_{{ version }}.tar.gz
-  sha256: 71b61a83d1042fafa0b90f8d04907900409d63964a98b5c504a86a54c7d9e247
+  sha256: 62d3e95390e948dffb96b21962707e496e0c39d83eb12f31c3254632c628c9ac
 
 build:
   merge_build_host: true  # [win]
@@ -26,33 +26,37 @@ requirements:
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
-    - {{ posix }}make
     - {{ posix }}sed               # [win]
+    - {{ posix }}grep              # [win]
+    - {{ posix }}autoconf
+    - {{ posix }}automake          # [not win]
+    - {{ posix }}automake-wrapper  # [win]
+    - {{ posix }}pkg-config
+    - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-rcpp >=0.12.12
-    - r-gdtools >=0.2.1
-    - r-ggplot2 >=3.2.0
+    - r-ggplot2 >=3.3.0
     - r-htmltools
     - r-htmlwidgets >=0.6
     - r-purrr
     - r-rlang
+    - r-systemfonts
     - r-uuid
-    - r-xml2 >=1.0.0
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.12
-    - r-gdtools >=0.2.1
-    - r-ggplot2 >=3.2.0
+    - r-ggplot2 >=3.3.0
     - r-htmltools
     - r-htmlwidgets >=0.6
     - r-purrr
     - r-rlang
+    - r-systemfonts
     - r-uuid
-    - r-xml2 >=1.0.0
 
 test:
   commands:
@@ -61,7 +65,7 @@ test:
 
 about:
   home: https://davidgohel.github.io/ggiraph
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.
   license_family: GPL3
   license_file:
