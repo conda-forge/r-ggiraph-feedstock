@@ -1,11 +1,22 @@
+About r-ggiraph-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-ggiraph-feedstock/blob/main/LICENSE.txt)
+
 About r-ggiraph
-===============
+---------------
 
 Home: https://davidgohel.github.io/ggiraph
 
 Package license: GPL-3.0-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-ggiraph-feedstock/blob/main/LICENSE.txt)
+Summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.
+About r-ggiraph
+---------------
+
+Home: https://davidgohel.github.io/ggiraph
+
+Package license: GPL-3.0-only
 
 Summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.
 
