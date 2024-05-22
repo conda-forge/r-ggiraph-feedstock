@@ -15,6 +15,7 @@ source:
 build:
   merge_build_host: true  # [win]
   number: 0
+  skip: true  # [win]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -40,25 +41,29 @@ requirements:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-rcpp >=0.12.12
-    - r-ggplot2 >=3.3.0
+    - r-rcpp >=1.0
+    - r-cli
+    - r-ggplot2 >=3.5.0
     - r-htmltools
-    - r-htmlwidgets >=0.6
+    - r-htmlwidgets >=1.5
     - r-purrr
     - r-rlang
     - r-systemfonts
     - r-uuid
+    - r-vctrs
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-rcpp >=0.12.12
-    - r-ggplot2 >=3.3.0
+    - r-rcpp >=1.0
+    - r-cli
+    - r-ggplot2 >=3.5.0
     - r-htmltools
-    - r-htmlwidgets >=0.6
+    - r-htmlwidgets >=1.5
     - r-purrr
     - r-rlang
     - r-systemfonts
     - r-uuid
+    - r-vctrs
 
 test:
   commands:
