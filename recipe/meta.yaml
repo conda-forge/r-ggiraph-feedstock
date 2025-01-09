@@ -60,6 +60,7 @@ requirements:
     - r-systemfonts
     - r-uuid
     - r-vctrs
+    - zlib
   run:
     - r-base
     - r-rcpp >=1.0
