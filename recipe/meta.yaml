@@ -1,4 +1,4 @@
-{% set version = "0.8.12" %}
+{% set version = "0.9.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ggiraph_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ggiraph/ggiraph_{{ version }}.tar.gz
-  sha256: a8544fad40e68174bd0e753ecb3fc0afd840adf0fefa45231d6f5326a8a3b557
+  sha256: 57e05d8e8943c29af9a143ba88b4aca849a467efd9980693026819f0aa01eacd
 
 build:
   number: 0
