@@ -53,6 +53,7 @@ requirements:
     - r-systemfonts >=1.3.1        # [build_platform != target_platform]
     - r-vctrs                      # [build_platform != target_platform]
   host:
+    - libpng
     - r-base
     - r-rcpp >=1.1.0
     - r-s7 >=0.2.0
