@@ -13,11 +13,13 @@ source:
 
 build:
   number: 0
-  # Checking windows to see if it passes. Uncomment the line if it fails.
-  # skip: true  # [win]
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
@@ -38,40 +40,46 @@ requirements:
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
-    - r-rcpp >=1.0                 # [build_platform != target_platform]
+    - r-rcpp >=1.1.0               # [build_platform != target_platform]
+    - r-s7 >=0.2.0                 # [build_platform != target_platform]
     - r-cli                        # [build_platform != target_platform]
-    - r-ggplot2 >=3.5.0            # [build_platform != target_platform]
+    - r-dplyr                      # [build_platform != target_platform]
+    - r-gdtools >=0.4.4            # [build_platform != target_platform]
+    - r-ggplot2 >=4.0.0            # [build_platform != target_platform]
     - r-htmltools                  # [build_platform != target_platform]
     - r-htmlwidgets >=1.5          # [build_platform != target_platform]
     - r-purrr                      # [build_platform != target_platform]
     - r-rlang                      # [build_platform != target_platform]
-    - r-systemfonts                # [build_platform != target_platform]
-    - r-uuid                       # [build_platform != target_platform]
+    - r-systemfonts >=1.3.1        # [build_platform != target_platform]
     - r-vctrs                      # [build_platform != target_platform]
   host:
     - r-base
-    - r-rcpp >=1.0
+    - r-rcpp >=1.1.0
+    - r-s7 >=0.2.0
     - r-cli
-    - r-ggplot2 >=3.5.0
+    - r-dplyr
+    - r-gdtools >=0.4.4
+    - r-ggplot2 >=4.0.0
     - r-htmltools
     - r-htmlwidgets >=1.5
     - r-purrr
     - r-rlang
-    - r-systemfonts
-    - r-uuid
+    - r-systemfonts >=1.3.1
     - r-vctrs
     - zlib
   run:
     - r-base
-    - r-rcpp >=1.0
+    - r-rcpp >=1.1.0
+    - r-s7 >=0.2.0
     - r-cli
-    - r-ggplot2 >=3.5.0
+    - r-dplyr
+    - r-gdtools >=0.4.4
+    - r-ggplot2 >=4.0.0
     - r-htmltools
     - r-htmlwidgets >=1.5
     - r-purrr
     - r-rlang
-    - r-systemfonts
-    - r-uuid
+    - r-systemfonts >=1.3.1
     - r-vctrs
 
 test:
@@ -83,6 +91,7 @@ about:
   home: https://davidgohel.github.io/ggiraph
   license: GPL-3.0-only
   summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.
+  license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
