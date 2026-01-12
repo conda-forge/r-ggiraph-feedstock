@@ -1,4 +1,4 @@
-{% set version = "0.8.12" %}
+{% set version = "0.9.2" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,15 +9,17 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ggiraph_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ggiraph/ggiraph_{{ version }}.tar.gz
-  sha256: a8544fad40e68174bd0e753ecb3fc0afd840adf0fefa45231d6f5326a8a3b557
+  sha256: efff3199d1407941b20b5e8e1e8ed1b65df4b3a0f517a6f0ade28eaa5050b4a2
 
 build:
-  number: 1
-  # Checking windows to see if it passes. Uncomment the line if it fails.
-  # skip: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
@@ -33,45 +35,52 @@ requirements:
     - {{ posix }}autoconf
     - {{ posix }}automake          # [not win]
     - {{ posix }}automake-wrapper  # [win]
-    - {{ posix }}pkg-config
+    - {{ posix }}pkg-config        # [not win]
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
-    - r-rcpp >=1.0                 # [build_platform != target_platform]
+    - r-rcpp >=1.1.0               # [build_platform != target_platform]
+    - r-s7 >=0.2.0                 # [build_platform != target_platform]
     - r-cli                        # [build_platform != target_platform]
-    - r-ggplot2 >=3.5.0            # [build_platform != target_platform]
+    - r-dplyr                      # [build_platform != target_platform]
+    - r-gdtools >=0.4.4            # [build_platform != target_platform]
+    - r-ggplot2 >=4.0.0            # [build_platform != target_platform]
     - r-htmltools                  # [build_platform != target_platform]
     - r-htmlwidgets >=1.5          # [build_platform != target_platform]
     - r-purrr                      # [build_platform != target_platform]
     - r-rlang                      # [build_platform != target_platform]
-    - r-systemfonts                # [build_platform != target_platform]
-    - r-uuid                       # [build_platform != target_platform]
+    - r-systemfonts >=1.3.1        # [build_platform != target_platform]
     - r-vctrs                      # [build_platform != target_platform]
   host:
+    - libpng
     - r-base
-    - r-rcpp >=1.0
+    - r-rcpp >=1.1.0
+    - r-s7 >=0.2.0
     - r-cli
-    - r-ggplot2 >=3.5.0
+    - r-dplyr
+    - r-gdtools >=0.4.4
+    - r-ggplot2 >=4.0.0
     - r-htmltools
     - r-htmlwidgets >=1.5
     - r-purrr
     - r-rlang
-    - r-systemfonts
-    - r-uuid
+    - r-systemfonts >=1.3.1
     - r-vctrs
     - zlib
   run:
     - r-base
-    - r-rcpp >=1.0
+    - r-rcpp >=1.1.0
+    - r-s7 >=0.2.0
     - r-cli
-    - r-ggplot2 >=3.5.0
+    - r-dplyr
+    - r-gdtools >=0.4.4
+    - r-ggplot2 >=4.0.0
     - r-htmltools
     - r-htmlwidgets >=1.5
     - r-purrr
     - r-rlang
-    - r-systemfonts
-    - r-uuid
+    - r-systemfonts >=1.3.1
     - r-vctrs
 
 test:
@@ -83,6 +92,7 @@ about:
   home: https://davidgohel.github.io/ggiraph
   license: GPL-3.0-only
   summary: Create interactive 'ggplot2' graphics using 'htmlwidgets'.
+  license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
