@@ -1,4 +1,4 @@
-{% set version = "0.9.5" %}
+{% set version = "0.9.6" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ggiraph_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ggiraph/ggiraph_{{ version }}.tar.gz
-  sha256: d8390a1b6a333664342d9a2a3ecb2fffcdb23baead0f269146ce087fc0c38913
+  sha256: 715f1ef27f0e3ab7775c90684ce8932aa0739ba2a2103713eb0a20eac1b7b645
 
 build:
   number: 0
@@ -48,6 +48,7 @@ requirements:
     - r-ggplot2 >=4.0.0            # [build_platform != target_platform]
     - r-htmltools                  # [build_platform != target_platform]
     - r-htmlwidgets >=1.5          # [build_platform != target_platform]
+    - r-mass                       # [build_platform != target_platform]
     - r-purrr                      # [build_platform != target_platform]
     - r-rlang                      # [build_platform != target_platform]
     - r-systemfonts >=1.3.1        # [build_platform != target_platform]
@@ -63,6 +64,7 @@ requirements:
     - r-ggplot2 >=4.0.0
     - r-htmltools
     - r-htmlwidgets >=1.5
+    - r-mass
     - r-purrr
     - r-rlang
     - r-systemfonts >=1.3.1
@@ -78,6 +80,7 @@ requirements:
     - r-ggplot2 >=4.0.0
     - r-htmltools
     - r-htmlwidgets >=1.5
+    - r-mass
     - r-purrr
     - r-rlang
     - r-systemfonts >=1.3.1
